@@ -6,9 +6,260 @@
 </description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 04 Sep 2017 17:04:06 +0900</pubDate>
-    <lastBuildDate>Mon, 04 Sep 2017 17:04:06 +0900</lastBuildDate>
+    <pubDate>Tue, 05 Sep 2017 15:41:06 +0900</pubDate>
+    <lastBuildDate>Tue, 05 Sep 2017 15:41:06 +0900</lastBuildDate>
     <generator>Jekyll v3.5.2</generator>
+    
+      <item>
+        <title> vue_basic</title>
+        <description>&lt;p&gt;vue.js 적용해보기&lt;/p&gt;
+
+&lt;h2 id=&quot;vue-시작하기&quot;&gt;vue 시작하기&lt;/h2&gt;
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;// index.html
+&lt;span class=&quot;cp&quot;&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;html&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;lang=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;head&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;meta&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;charset=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;UTF-8&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;title&amp;gt;&lt;/span&gt;vueTest&lt;span class=&quot;nt&quot;&gt;&amp;lt;/title&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/head&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;body&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;app&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+ { {message} } // { 붙여야..
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;bundle/index.bundle.js&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/html&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// index.js&lt;/span&gt;
+&lt;span class=&quot;kr&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Vue&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;vue&quot;&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;app&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Vue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;el&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'#app'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'안녕하세요 Vue!'&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// webpack.config.js&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;module&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;exports&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;entry&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;s2&quot;&gt;&quot;index&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'./index.js'&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+
+    &lt;span class=&quot;na&quot;&gt;output&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;__dirname&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'/bundle/'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;filename&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'[name].bundle.js'&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;resolve&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;alias&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;s1&quot;&gt;'vue$'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'vue/dist/vue.esm.js'&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;webpack
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;을 통해 빌드를 한 후 확인합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;/assets/images/vue_test.png&quot;&gt;&lt;img src=&quot;/assets/images/vue_test.png&quot; alt=&quot;vue_test&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;(아직 runtime과 compiler를 포함한다는 것에 대한 개념이 확실치 않아서
+vue를 runtime-only가 아닌 runtime-only + compiler를 포함한 코드를 사용
+하였습니다.)&lt;/p&gt;
+
+</description>
+        <pubDate>Tue, 05 Sep 2017 14:42:00 +0900</pubDate>
+        <link>http://localhost:4000/posts/vue_basic/</link>
+        <guid isPermaLink="true">http://localhost:4000/posts/vue_basic/</guid>
+        
+        <category>vue.js</category>
+        
+        
+        <category>posts</category>
+        
+      </item>
+    
+      <item>
+        <title>webpack</title>
+        <description>&lt;h2 id=&quot;webpack이란&quot;&gt;Webpack이란?&lt;/h2&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;웹팩은 모듈 번들러 입니다.
+웹팩은 상호 의존성이 있는 모듈들을 사용해 그 모듈들과 같은 역할을 하는 정적 에셋들을 생성해냅니다.
+(Webpack is a module bundler. Webpack takes modules with dependencies and generates static assets representing those modules.) - 공식 사이트&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;webpack은 기본적으로 module bundler입니다.
+module bundler가 등장하게 된 이유는 코드가 많아지다 보면 파일을 나누어서 짜야 하는 일이
+생기게 됩니다. 이 때 그 나눈 파일들을 모듈로 관리하고 싶어지게 됩니다.
+하지만 javascript는 이러한 모듈간의 import를 지원하지 않기 때문에 webpack을 통해 여러js파일을
+하나로 번들링하여 사용할 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;/assets/images/what-is-webpack.png&quot;&gt;&lt;img src=&quot;/assets/images/what-is-webpack.png&quot; alt=&quot;webpack&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;webpack을-쓰지-않았을-때&quot;&gt;Webpack을 쓰지 않았을 때?&lt;/h3&gt;
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;// main.html
+...
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/resources/js/node_modules/jquery/dist/jquery.js&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/resources/js/node_modules/handlebars/dist/handlebars.js&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/resources/js/node_modules/@egjs/component/dist/component.js&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/resources/js/handlebarsModule.js&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/resources/js/flicking.js&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/resources/js/review.js&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;이러한 식으로 외부 모듈의 경우 직접 node_modules안으로 파고 들어가서 찾아쓰고
+개발자가 만든 모듈 또한 찾아서 html안에 script로 넣어야 하는 번거로움이 있었습니다.
+더군다나 이 경우 script를 불러오는데 http통신을 6번이나 하게 됩니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;webpack-설치&quot;&gt;webpack 설치&lt;/h2&gt;
+&lt;p&gt;webpack은 npm을 통해 설치 할 수 있습니다.
+global하게 깔아도 되고 프로젝트 안에 깔아도 상관없습니다.
+하지만 project에 설치할 때는 dev옵션을 줘서 까는 것이 좋습니다.&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;// 글로벌
+npm install -g webpack
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;webpack을 깔았으면 설정을 해줘야 합니다.&lt;/p&gt;
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;module&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;exports&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;entry&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;s2&quot;&gt;&quot;index&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'./index.js'&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;output&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;__dirname&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'/bundle/'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;filename&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'[name]bundle.js'&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;webpack.config.js 파일을 만들어 줍니다.
+webpack은 기본적으로 저 파일을 통해 설정을 확인합니다.
+&lt;code class=&quot;highlighter-rouge&quot;&gt;entry&lt;/code&gt;는 기본적으로 실행을 하는 js파일입니다.
+여러개 설정 가능합니다.
+&lt;code class=&quot;highlighter-rouge&quot;&gt;output&lt;/code&gt;은 그 entry를 바탕으로 사용하는 모듈들을 불러와서 번들링한 js파일입니다.&lt;/p&gt;
+
+&lt;h3 id=&quot;추가적인-기능&quot;&gt;추가적인 기능&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;minimize : 코드 최적화&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;tree shaking : 사용되는 코드만 번들링&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Code Splitting에서 : 코드를 분리한 후 비동기 적으로 import 시켜서 사용할 수 있음&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Hot Reloading : –watch 옵션으로 바뀐 코드를 자동으로 빌드&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;등등&lt;/p&gt;
+
+</description>
+        <pubDate>Tue, 05 Sep 2017 12:30:00 +0900</pubDate>
+        <link>http://localhost:4000/posts/webpack/</link>
+        <guid isPermaLink="true">http://localhost:4000/posts/webpack/</guid>
+        
+        <category>front-end</category>
+        
+        
+        <category>posts</category>
+        
+      </item>
+    
+      <item>
+        <title>npm 사용법</title>
+        <description>&lt;h2 id=&quot;npm이란&quot;&gt;npm이란?&lt;/h2&gt;
+&lt;p&gt;npm은 node packaged modules 의 약자로 node.js에서 필요한 모듈을 패키지로
+모아 놓은 것입니다. npm을 통해 다른 사람들이 만든 모듈을 다운 받을 수 있습니다.
+사실 npm은 nodejs를 위해 나온 것이지만 (node.js를 깔면 같이 깔린다)
+요즘은 Front-End에서도 활용하고 있습니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;npm-설치&quot;&gt;npm 설치&lt;/h2&gt;
+&lt;p&gt;npm은 nodejs를 깔 때 같이 깔리게 되어 node.js를 받아야 합니다.
+&lt;a href=&quot;https://nodejs.org/ko/&quot;&gt;설치 &lt;/a&gt;
+LTS로 설치를 주로 하니 LTS로 설치하는 것을 권장합니다.
+환경변수는 알아서 다 잡아줍니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;npm-기본-사용법&quot;&gt;npm 기본 사용법&lt;/h2&gt;
+&lt;p&gt;설치가 완료 되면 cmd 창에서 node,npm 명령어를 사용할 수 있습니다.
+npm -v 을 이용하여 버전을 확인합니다.
+저는 현재 5.4.0인데 만약 최신이 아니라면&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;npm install -g npm
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;으로 최선버전으로 업데이트 해줍니다.( 여기서 -g는 global 옵션입니다.)&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;C:\Users\사용자\AppData\Roaming\npm\node_modules
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;-g 옵션의 기본 설치 경로입니다.&lt;/p&gt;
+
+&lt;p&gt;이제 자신의 프로젝트 디렉토리에 가서&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;npm init
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;명령어를 칩니다. 그럼 여러가지 입력창이 나오는데 모두 엔터눌러도 상관 없습니다. (연습이라)
+입력을 모두 마치면 package.json 파일이 하나 생깁니다.
+package.json은 해당 프로젝트의 필요한 module들의 의존성을 관리합니다.&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# 최신 안정화 버전
+$ npm install vue --save
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;간단하게 vue.js를 설치해봅니다.&lt;/p&gt;
+&lt;div class=&quot;language-json highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;name&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;vueTest&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;version&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;1.0.0&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;description&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;main&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;index.js&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;scripts&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;test&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;echo \&quot;Error: no test specified\&quot; &amp;amp;&amp;amp; exit 1&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;author&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;license&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;ISC&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;dependencies&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;vue&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;^2.4.2&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;그럼 이러한 형식으로 package.json의 &lt;code class=&quot;highlighter-rouge&quot;&gt;dependencies&lt;/code&gt;에 vue가 추가되는 것이 보입니다.
+&lt;code class=&quot;highlighter-rouge&quot;&gt;dependencies&lt;/code&gt;는 해당 프로젝트의 모듈의 의존성을 적어 둡니다.(–save 옵션으로)
+또한 node_modules라는 폴더에 vue폴더가 생긴 것을 볼 수 있습니다.
+이렇게 사용하는 이유는 git에 많은 module들을 올리는 것은 비효율적이고, module들의
+버전을 적어 놓음으로써 다른 버전을 사용해서 올 수 있는 이슈들을 막을 수 있습니다.&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;npm install
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;명령어를 치면 &lt;code class=&quot;highlighter-rouge&quot;&gt;dependencies&lt;/code&gt;에 있는 모듈들을 node_module 폴더에 설치합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;scripts&lt;/code&gt;는 자신이 쓰고자 하는 스크립트를 적어 놓을 수 있습니다.
+예를 들어&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;npm run test
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;를 하면 “echo &quot;Error: no test specified&quot; &amp;amp;&amp;amp; exit 1” 명령어를 실행합니다.&lt;/p&gt;
+
+</description>
+        <pubDate>Tue, 05 Sep 2017 10:08:00 +0900</pubDate>
+        <link>http://localhost:4000/posts/npm_use/</link>
+        <guid isPermaLink="true">http://localhost:4000/posts/npm_use/</guid>
+        
+        <category>front-end</category>
+        
+        
+        <category>posts</category>
+        
+      </item>
     
       <item>
         <title>Spring 기본</title>
@@ -229,21 +480,6 @@ webpack –optimize-minimize 옵션을 쓰면 bundle된 js에 코드가 들어�
         <pubDate>Mon, 04 Sep 2017 22:09:47 +0900</pubDate>
         <link>http://localhost:4000/posts/about_es6/</link>
         <guid isPermaLink="true">http://localhost:4000/posts/about_es6/</guid>
-        
-        <category>front-end</category>
-        
-        
-        <category>posts</category>
-        
-      </item>
-    
-      <item>
-        <title>Asynchronous</title>
-        <description>&lt;p&gt;JS 비동기에 대해 설명하고자 합니다.&lt;/p&gt;
-</description>
-        <pubDate>Mon, 04 Sep 2017 16:52:00 +0900</pubDate>
-        <link>http://localhost:4000/posts/asynchronous/</link>
-        <guid isPermaLink="true">http://localhost:4000/posts/asynchronous/</guid>
         
         <category>front-end</category>
         
