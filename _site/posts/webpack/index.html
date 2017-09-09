@@ -17,4 +17,90 @@ npm install -g webpack
         <span class="na">filename</span><span class="p">:</span> <span class="s1">'[name]bundle.js'</span>
     <span class="p">}</span>
 <span class="p">};</span>
-</code></pre></div><p>webpack.config.js 파일을 만들어 줍니다. webpack은 기본적으로 저 파일을 통해 설정을 확인합니다. <code class="highlighter-rouge">entry</code>는 기본적으로 실행을 하는 js파일입니다. 여러개 설정 가능합니다. <code class="highlighter-rouge">output</code>은 그 entry를 바탕으로 사용하는 모듈들을 불러와서 번들링한 js파일입니다.<h3 id="추가적인-기능">추가적인 기능</h3><blockquote><p>minimize : 코드 최적화</blockquote><blockquote><p>tree shaking : 사용되는 코드만 번들링</blockquote><blockquote><p>Code Splitting에서 : 코드를 분리한 후 비동기 적으로 import 시켜서 사용할 수 있음</blockquote><blockquote><p>Hot Reloading : –watch 옵션으로 바뀐 코드를 자동으로 빌드</blockquote><p>등등<div class="post-links"> <a class="link-to-post" href="/posts/vue_basic/"> <span class="link-to-post__next">&#10535; &nbsp;Next post</span> <span class="link-to-post__title"> vue_basic</span> </a> <a class="link-to-post" href="/posts/npm_use/"> <span class="link-to-post__prev">&#10535; &nbsp;Previous post</span> <span class="link-to-post__title">npm 사용법</span> </a></div></div></article></main><footer class="blog-footer content-wrapper"><p>&copy; <span class="full-year"></span> GuBeom</footer><script src="/assets/js/scripts.js"></script>
+</code></pre></div><p>webpack.config.js 파일을 만들어 줍니다. webpack은 기본적으로 저 파일을 통해 설정을 확인합니다. <code class="highlighter-rouge">entry</code>는 기본적으로 실행을 하는 js파일입니다. 여러개 설정 가능합니다. <code class="highlighter-rouge">output</code>은 그 entry를 바탕으로 사용하는 모듈들을 불러와서 번들링한 js파일입니다.<h1 id="babel">Babel</h1><h2 id="babel이란">Babel이란?</h2><p>간단히 말해서 es6,7..의 코드를 es5로 변환 시켜주는 도구입니다. babel이 필요한 이유는 모든 브라우저가 es6를 포함한 상위 버전을 지원하지는 않기 때문입니다. ( 익스플로어..)<h2 id="babel-사용">Babel 사용</h2><p>babel만 이용할 수도 있지만, webpack을 쓸 것이기 때문에 webpack에 달아서 쓰는 연습을 해보겠습니다.<h3 id="babel-설치">babel 설치</h3><p>일단 필요한 babel을 설치합니다.<div class="highlighter-rouge"><pre class="highlight"><code>npm install --save-dev babel-core babel-preset-env babel-preset-stage-2
+</code></pre></div><ul><li>설명<ul><li>preset : plugin 의 모음<li>stage :EcmaScript중에서 비공식 실험적인 기술들을 사용할 수 있게 해주는 프리셋<ul><li>0,1 : 자주 바뀌는 기술들<li>2 : 안정적인 기술</ul><li>env 프리셋은 최신 ecmascript 사용, 사용자 환경에 맞춰서 polyfill까지 넣어줌 env를 쓰지 않을 꺼면 babel-preset-es2015 를 설치하여 사용합니다.</ul></ul><h3 id="babel-polyfill">babel-polyfill</h3><p>babel만 사용하면 단순히 es6의 문법을 es5로만 바꾸어줍니다. 하지만 이 것이 문제가 되는 이유는 ES6의 새로운 객체(Promise, Map, Set 등등)과 메소드(Array.find, Object.assign 등등)을 사용할 수 없습니다. 예를 들어 설명하겠습니다.<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="kr">const</span> <span class="nx">foo</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">name</span><span class="p">:</span> <span class="s1">'Homer'</span>
+<span class="p">};</span>
+<span class="kr">const</span> <span class="nx">bar</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">assign</span><span class="p">({},</span> <span class="nx">foo</span><span class="p">,</span> <span class="p">{</span><span class="na">age</span><span class="p">:</span> <span class="s1">'?'</span><span class="p">});</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span><span class="p">(</span><span class="nx">foo</span><span class="p">),</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span><span class="p">(</span><span class="nx">bar</span><span class="p">));</span>
+</code></pre></div><div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="s1">'use strict'</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">foo</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">name</span><span class="p">:</span> <span class="s1">'Homer'</span>
+<span class="p">};</span>
+<span class="kd">var</span> <span class="nx">bar</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">assign</span><span class="p">({},</span> <span class="nx">foo</span><span class="p">,</span> <span class="p">{</span> <span class="na">age</span><span class="p">:</span> <span class="s1">'?'</span> <span class="p">});</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span><span class="p">(</span><span class="nx">foo</span><span class="p">),</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span><span class="p">(</span><span class="nx">bar</span><span class="p">));</span>
+</code></pre></div><p>출처 : https://stackoverflow.com/questions/36196592/why-do-we-need-to-use-import-babel-polyfill-in-react-components 아래의 es5문법에서는 Object.assign을 사용할 수 없지만 babel만 사용하면 단순히 저러한 식으로 변환이 되기 때문에 polyfill이 필요합니다.<p>poly-fill을 설치합니다. (env를 쓰면 설치할 필요 없습니다)<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="nx">npm</span> <span class="nx">install</span> <span class="o">--</span><span class="nx">save</span><span class="o">-</span><span class="nx">dev</span> <span class="nx">babel</span><span class="o">-</span><span class="nx">polyfill</span>
+</code></pre></div><p>webpack 사용시에는<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="kr">import</span> <span class="s1">'babel-polyfill'</span><span class="p">;</span>
+</code></pre></div><p>를 사용하면 webpack이 알아서 적용합니다.<h2 id="webpack-loader">Webpack loader</h2><p>로더는 간단히 말하면 특정 파일을 로드할 때 거치는 과정(?) 이라고 할 수 있습니다.<h3 id="stylesheet">Stylesheet</h3><p>stylesheet을 js파일로 번들링 할 수 있는 방법입니다.<div class="highlighter-rouge"><pre class="highlight"><code>npm install --save-dev style-loader css-loader
+</code></pre></div><ul><li>style-loader : Adds CSS to the DOM by injecting a<style> tag (html에 `<style>` tag를 injecting 함)</style></style><li>css-loader : CSS의 @import나 url()문을 CommonJS의 require 처럼 해석할 수 있도록 만들어주는 로더</ul><p>webpack.config.js에 추가합니다.<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">entry</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"index"</span> <span class="p">:</span> <span class="s1">'./index.js'</span>
+    <span class="p">},</span>
+    <span class="na">output</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">path</span><span class="p">:</span> <span class="nx">__dirname</span> <span class="o">+</span> <span class="s1">'/bundle/'</span><span class="p">,</span>
+        <span class="na">filename</span><span class="p">:</span> <span class="s1">'[name]bundle.js'</span>
+    <span class="p">},</span>
+    <span class="na">module</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">rules</span><span class="p">:</span> <span class="p">[</span>
+         <span class="p">{</span>
+            <span class="na">test</span><span class="p">:</span> <span class="sr">/</span><span class="se">\.</span><span class="sr">css$/</span><span class="p">,</span>
+            <span class="na">use</span><span class="p">:</span> <span class="p">[</span>
+              <span class="s1">'style-loader'</span><span class="p">,</span>
+              <span class="s1">'css-loader'</span>
+            <span class="p">]</span>
+         <span class="p">},</span>
+
+        <span class="p">]</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+</code></pre></div><p>같은 파일에 대해서는 로더가 아래쪽 부터 적용됩니다.<h3 id="babel-1">babel</h3><p>전에 babel을 다 설치했으니 babel-loader만 설치합니다.<div class="highlighter-rouge"><pre class="highlight"><code>npm install --save-dev babel-loader
+</code></pre></div><div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">entry</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"index"</span> <span class="p">:</span> <span class="s1">'./index.js'</span>
+    <span class="p">},</span>
+    <span class="na">output</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">path</span><span class="p">:</span> <span class="nx">__dirname</span> <span class="o">+</span> <span class="s1">'/bundle/'</span><span class="p">,</span>
+        <span class="na">filename</span><span class="p">:</span> <span class="s1">'[name]bundle.js'</span>
+    <span class="p">},</span>
+    <span class="na">module</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">rules</span><span class="p">:</span> <span class="p">[</span>
+         <span class="p">{</span>
+            <span class="na">test</span><span class="p">:</span> <span class="sr">/</span><span class="se">\.</span><span class="sr">css$/</span><span class="p">,</span>
+            <span class="na">use</span><span class="p">:</span> <span class="p">[</span>
+              <span class="s1">'style-loader'</span><span class="p">,</span>
+              <span class="s1">'css-loader'</span>
+            <span class="p">]</span>
+         <span class="p">},</span>
+         <span class="p">{</span>
+             <span class="na">test</span><span class="p">:</span> <span class="sr">/</span><span class="se">\.</span><span class="sr">js$/</span><span class="p">,</span>
+             <span class="na">exclude</span><span class="p">:</span> <span class="sr">/node_modules/</span><span class="p">,</span>
+             <span class="na">loader</span><span class="p">:</span> <span class="s1">'babel-loader'</span><span class="p">,</span>
+             <span class="na">options</span><span class="p">:</span> <span class="p">{</span>
+               <span class="na">presets</span><span class="p">:</span> <span class="p">[</span><span class="s1">'env'</span><span class="p">]</span>
+             <span class="p">}</span>
+           <span class="p">}</span>
+        <span class="p">]</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+</code></pre></div><div class="highlighter-rouge"><pre class="highlight"><code><span class="err">&lt;</span>! --index.html --&gt;
+<span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"UTF-8"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;title&gt;</span>vueTest<span class="nt">&lt;/title&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"app"</span><span class="nt">&gt;</span>
+test!
+<span class="nt">&lt;/div&gt;</span>
+
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"bundle/index.bundle.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div><div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="c1">// index.js</span>
+<span class="kr">import</span> <span class="s1">'./style.css'</span><span class="p">;</span>
+</code></pre></div><div class="language-css highlighter-rouge"><pre class="highlight"><code><span class="c">/* style.css */</span>
+<span class="nf">#app</span> <span class="p">{</span>
+    <span class="nl">color</span><span class="p">:</span><span class="no">red</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div><p>webpack으로 빌드한 후 확인합니다. <a href="/assets/images/style-loader-test.PNG"><img src="/assets/images/style-loader-test.PNG" alt="style-test" /></a> <code class="highlighter-rouge">&lt;style&gt;</code> tag가 추가된걸 확인 할 수 있습니다.<h3 id="추가적인-기능">추가적인 기능</h3><blockquote><p>minimize : 코드 최적화</blockquote><blockquote><p>tree shaking : 사용되는 코드만 번들링</blockquote><blockquote><p>Code Splitting에서 : 코드를 분리한 후 비동기 적으로 import 시켜서 사용할 수 있음</blockquote><blockquote><p>Hot Reloading : –watch 옵션으로 바뀐 코드를 자동으로 빌드</blockquote><p>등등<div class="post-links"> <a class="link-to-post" href="/posts/vue_basic/"> <span class="link-to-post__next">&#10535; &nbsp;Next post</span> <span class="link-to-post__title"> vue_basic</span> </a> <a class="link-to-post" href="/posts/npm_use/"> <span class="link-to-post__prev">&#10535; &nbsp;Previous post</span> <span class="link-to-post__title">npm 사용법</span> </a></div></div></article></main><footer class="blog-footer content-wrapper"><p>&copy; <span class="full-year"></span> GuBeom</footer><script src="/assets/js/scripts.js"></script>
