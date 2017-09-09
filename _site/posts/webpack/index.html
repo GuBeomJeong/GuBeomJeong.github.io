@@ -32,7 +32,7 @@ npm install -g webpack
 </code></pre></div><p>출처 : https://stackoverflow.com/questions/36196592/why-do-we-need-to-use-import-babel-polyfill-in-react-components 아래의 es5문법에서는 Object.assign을 사용할 수 없지만 babel만 사용하면 단순히 저러한 식으로 변환이 되기 때문에 polyfill이 필요합니다.<p>poly-fill을 설치합니다. (env를 쓰면 설치할 필요 없습니다)<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="nx">npm</span> <span class="nx">install</span> <span class="o">--</span><span class="nx">save</span><span class="o">-</span><span class="nx">dev</span> <span class="nx">babel</span><span class="o">-</span><span class="nx">polyfill</span>
 </code></pre></div><p>webpack 사용시에는<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="kr">import</span> <span class="s1">'babel-polyfill'</span><span class="p">;</span>
 </code></pre></div><p>를 사용하면 webpack이 알아서 적용합니다.<h2 id="webpack-loader">Webpack loader</h2><p>로더는 간단히 말하면 특정 파일을 로드할 때 거치는 과정(?) 이라고 할 수 있습니다.<h3 id="stylesheet">Stylesheet</h3><p>stylesheet을 js파일로 번들링 할 수 있는 방법입니다.<div class="highlighter-rouge"><pre class="highlight"><code>npm install --save-dev style-loader css-loader
-</code></pre></div><ul><li>style-loader : Adds CSS to the DOM by injecting a<style> tag (html에 `<style>` tag를 injecting 함)</style></style><li>css-loader : CSS의 @import나 url()문을 CommonJS의 require 처럼 해석할 수 있도록 만들어주는 로더</ul><p>webpack.config.js에 추가합니다.<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+</code></pre></div><ul><li>style-loader : Adds CSS to the DOM by injecting a <code class="highlighter-rouge">&lt;style&gt;</code> tag (html에 <code class="highlighter-rouge">&lt;style&gt;</code> tag를 injecting 함)<li>css-loader : CSS의 @import나 url()문을 CommonJS의 require 처럼 해석할 수 있도록 만들어주는 로더</ul><p>webpack.config.js에 추가합니다.<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
     <span class="na">entry</span><span class="p">:</span> <span class="p">{</span>
         <span class="s2">"index"</span> <span class="p">:</span> <span class="s1">'./index.js'</span>
     <span class="p">},</span>
@@ -76,7 +76,7 @@ npm install -g webpack
              <span class="na">exclude</span><span class="p">:</span> <span class="sr">/node_modules/</span><span class="p">,</span>
              <span class="na">loader</span><span class="p">:</span> <span class="s1">'babel-loader'</span><span class="p">,</span>
              <span class="na">options</span><span class="p">:</span> <span class="p">{</span>
-               <span class="na">presets</span><span class="p">:</span> <span class="p">[</span><span class="s1">'env'</span><span class="p">]</span>
+               <span class="na">presets</span><span class="p">:</span> <span class="p">[</span><span class="s1">'env'</span><span class="p">,</span> <span class="s2">"stage-2"</span><span class="p">]</span>
              <span class="p">}</span>
            <span class="p">}</span>
         <span class="p">]</span>
