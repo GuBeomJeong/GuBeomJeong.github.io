@@ -14,7 +14,7 @@ npm install -g webpack
     <span class="p">},</span>
     <span class="na">output</span><span class="p">:</span> <span class="p">{</span>
         <span class="na">path</span><span class="p">:</span> <span class="nx">__dirname</span> <span class="o">+</span> <span class="s1">'/bundle/'</span><span class="p">,</span>
-        <span class="na">filename</span><span class="p">:</span> <span class="s1">'[name]bundle.js'</span>
+        <span class="na">filename</span><span class="p">:</span> <span class="s1">'[name].bundle.js'</span>
     <span class="p">}</span>
 <span class="p">};</span>
 </code></pre></div><p>webpack.config.js 파일을 만들어 줍니다. webpack은 기본적으로 저 파일을 통해 설정을 확인합니다. <code class="highlighter-rouge">entry</code>는 기본적으로 실행을 하는 js파일입니다. 여러개 설정 가능합니다. <code class="highlighter-rouge">output</code>은 그 entry를 바탕으로 사용하는 모듈들을 불러와서 번들링한 js파일입니다.<h1 id="babel">Babel</h1><h2 id="babel이란">Babel이란?</h2><p>간단히 말해서 es6,7..의 코드를 es5로 변환 시켜주는 도구입니다. babel이 필요한 이유는 모든 브라우저가 es6를 포함한 상위 버전을 지원하지는 않기 때문입니다. ( 익스플로어..)<h2 id="babel-사용">Babel 사용</h2><p>babel만 이용할 수도 있지만, webpack을 쓸 것이기 때문에 webpack에 달아서 쓰는 연습을 해보겠습니다.<h3 id="babel-설치">babel 설치</h3><p>일단 필요한 babel을 설치합니다.<div class="highlighter-rouge"><pre class="highlight"><code>npm install --save-dev babel-core babel-preset-env babel-preset-stage-2
@@ -38,7 +38,7 @@ npm install -g webpack
     <span class="p">},</span>
     <span class="na">output</span><span class="p">:</span> <span class="p">{</span>
         <span class="na">path</span><span class="p">:</span> <span class="nx">__dirname</span> <span class="o">+</span> <span class="s1">'/bundle/'</span><span class="p">,</span>
-        <span class="na">filename</span><span class="p">:</span> <span class="s1">'[name]bundle.js'</span>
+        <span class="na">filename</span><span class="p">:</span> <span class="s1">'[name].bundle.js'</span>
     <span class="p">},</span>
     <span class="na">module</span><span class="p">:</span> <span class="p">{</span>
         <span class="na">rules</span><span class="p">:</span> <span class="p">[</span>
@@ -60,7 +60,7 @@ npm install -g webpack
     <span class="p">},</span>
     <span class="na">output</span><span class="p">:</span> <span class="p">{</span>
         <span class="na">path</span><span class="p">:</span> <span class="nx">__dirname</span> <span class="o">+</span> <span class="s1">'/bundle/'</span><span class="p">,</span>
-        <span class="na">filename</span><span class="p">:</span> <span class="s1">'[name]bundle.js'</span>
+        <span class="na">filename</span><span class="p">:</span> <span class="s1">'[name].bundle.js'</span>
     <span class="p">},</span>
     <span class="na">module</span><span class="p">:</span> <span class="p">{</span>
         <span class="na">rules</span><span class="p">:</span> <span class="p">[</span>
