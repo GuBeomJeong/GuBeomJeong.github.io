@@ -3,6 +3,15 @@
 
   
   <url>
+    <loc>http://localhost:4000/posts/vuejs-component/</loc>
+    
+      <lastmod>2017-11-06</lastmod>
+    
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  <url>
     <loc>http://localhost:4000/posts/1700/</loc>
     
       <lastmod>2017-10-06</lastmod>

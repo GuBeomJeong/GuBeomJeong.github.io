@@ -1,0 +1,72 @@
+<!DOCTYPE html><html lang="kr"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><title> vue 컴포넌트</title><meta name="description" content="vue.js 단일 파일 컴포넌트 적용"><link rel="canonical" href="http://localhost:4000/posts/vuejs-component/"><link rel="alternate" type="application/rss+xml" title="GuBeom" href="http://localhost:4000/feed.xml"><link href='https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700|Roboto+Condensed:700&subset=latin' rel='stylesheet' type='text/css'><link rel="stylesheet" href="/assets/css/main.css"><meta property="og:url" content="http://localhost:4000/posts/vuejs-component/"><meta property="og:type" content="website"><meta property="og:title" content=" vue 컴포넌트"><meta property="og:description" content="vue 컴포넌트"><meta property="og:site_name" content="GuBeom"><meta name="twitter:card" content="summary"><meta name="twitter:url" content="http://localhost:4000/posts/vuejs-component/"><meta name="twitter:title" content=" vue 컴포넌트"><meta name="twitter:description" content="vue 컴포넌트"><meta property="og:image" content="http://localhost:4000/assets/images/"><meta name="twitter:image" content="http://localhost:4000/assets/images/"><body><div id="shadow"></div><header class="main-header content-wrapper"> <input type="checkbox" id="menu-checkbox" /><nav class="center-wrapper nav-main"> <a class="blog-logo" href="/">GuBeom</a> <a href="/about/">About</a> <a href="/posts/">Categories</a> <label for="menu-checkbox" class="toggle-button" data-open="☰" data-close="☰" onclick></label></nav></header><aside class="sidebar" role="note" style="background-image: url(/assets/images/)"><div class="cover"><div class="cover-text"><div class="heading"> <a href="/posts/#vue.js">vue.js</a></div><p> vue 컴포넌트</div></div><div id="switcher"></div></aside><main class="content-wrapper"><article class="post"><h1 class="post-title"> vue 컴포넌트</h1><p class="post-meta"> <time datetime="2017-11-06">06-11-2017</time> &nbsp;/&nbsp; <span>jgb</span><div class="post-content"><p>vue.js 단일 파일 컴포넌트 적용<h2 id="vue-컴포넌트">vue 컴포넌트</h2><div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="c1">//chat.vue</span>
+<span class="o">&lt;</span><span class="nx">template</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nx">ul</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="nx">li</span> <span class="nx">v</span><span class="o">-</span><span class="k">for</span><span class="o">=</span><span class="s2">"item in items"</span><span class="o">&gt;</span>
+                <span class="o">&lt;</span><span class="nx">Speech</span> <span class="err">:</span><span class="nx">item</span><span class="o">=</span><span class="s2">"item"</span> <span class="nx">v</span><span class="o">-</span><span class="nx">on</span><span class="err">:</span><span class="nx">removeSpeech</span><span class="o">=</span><span class="s2">"deleteSpeech"</span><span class="o">&gt;&lt;</span><span class="sr">/Speech</span><span class="err">&gt;
+</span>            <span class="o">&lt;</span><span class="sr">/li</span><span class="err">&gt;
+</span>        <span class="o">&lt;</span><span class="sr">/ul</span><span class="err">&gt;
+</span>        <span class="o">&lt;</span><span class="nx">input</span> <span class="nx">v</span><span class="o">-</span><span class="nx">model</span><span class="o">=</span><span class="s2">"message"</span> <span class="nx">v</span><span class="o">-</span><span class="nx">on</span><span class="err">:</span><span class="nx">keyup</span><span class="p">.</span><span class="nx">enter</span><span class="o">=</span><span class="s2">"make"</span> <span class="nx">placeholder</span><span class="o">=</span><span class="s2">""</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nx">button</span> <span class="nx">v</span><span class="o">-</span><span class="nx">on</span><span class="err">:</span><span class="nx">click</span><span class="o">=</span><span class="s2">"make"</span><span class="o">&gt;</span><span class="err">입력</span><span class="o">&lt;</span><span class="sr">/button</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>
+<span class="o">&lt;</span><span class="sr">/template</span><span class="err">&gt;
+</span>
+<span class="o">&lt;</span><span class="nx">script</span><span class="o">&gt;</span>
+    <span class="kr">export</span> <span class="k">default</span> <span class="p">{</span>
+        <span class="na">data</span><span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="p">{</span>
+                <span class="na">message</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span>
+                <span class="na">items</span><span class="p">:[</span>
+
+                <span class="p">]</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="na">methods</span><span class="p">:{</span>
+            <span class="na">make</span><span class="p">:</span><span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">){</span>
+                <span class="k">this</span><span class="p">.</span><span class="nx">items</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span>
+                    <span class="na">value</span><span class="p">:</span><span class="k">this</span><span class="p">.</span><span class="nx">message</span>
+                <span class="p">});</span>
+
+                <span class="k">this</span><span class="p">.</span><span class="nx">message</span> <span class="o">=</span> <span class="s2">""</span><span class="p">;</span>
+            <span class="p">},</span>
+            <span class="nx">deleteSpeech</span><span class="p">(</span><span class="nx">item</span><span class="p">){</span>
+                <span class="k">this</span><span class="p">.</span><span class="nx">items</span><span class="p">.</span><span class="nx">splice</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">items</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="nx">item</span><span class="p">),</span><span class="mi">1</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="o">&lt;</span><span class="sr">/script</span><span class="err">&gt;
+</span>
+<span class="o">&lt;</span><span class="nx">style</span><span class="o">&gt;</span>
+
+<span class="o">&lt;</span><span class="sr">/style</span><span class="err">&gt;
+</span></code></pre></div><div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="c1">//speech.vue</span>
+<span class="o">&lt;</span><span class="nx">template</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nx">div</span> <span class="kr">class</span><span class="o">=</span><span class="s2">"example"</span><span class="o">&gt;&lt;</span><span class="nx">button</span> <span class="kr">class</span><span class="o">=</span><span class="s2">"delete"</span> <span class="nx">v</span><span class="o">-</span><span class="nx">on</span><span class="err">:</span><span class="nx">click</span><span class="o">=</span><span class="s2">"del"</span><span class="o">&gt;&lt;</span><span class="sr">/button&gt;&lt;/</span><span class="nx">div</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="sr">/template</span><span class="err">&gt;
+</span>
+<span class="o">&lt;</span><span class="nx">script</span><span class="o">&gt;</span>
+    <span class="kr">export</span> <span class="k">default</span> <span class="p">{</span>
+        <span class="na">props</span><span class="p">:</span> <span class="p">[</span><span class="s2">"item"</span><span class="p">],</span>
+        <span class="na">data</span> <span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="p">{}</span>
+        <span class="p">},</span>
+        <span class="na">methods</span> <span class="p">:</span> <span class="p">{</span>
+            <span class="na">del</span><span class="p">:</span><span class="kd">function</span><span class="p">(){</span>
+
+                <span class="k">this</span><span class="p">.</span><span class="nx">$emit</span><span class="p">(</span><span class="s2">"removeSpeech"</span><span class="p">,</span><span class="k">this</span><span class="p">.</span><span class="nx">item</span><span class="p">);</span>
+
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="o">&lt;</span><span class="sr">/script</span><span class="err">&gt;
+</span>
+<span class="o">&lt;</span><span class="nx">style</span><span class="o">&gt;</span>
+    <span class="p">.</span><span class="nx">example</span> <span class="p">{</span>
+        <span class="na">color</span><span class="p">:</span> <span class="nx">blue</span><span class="p">;</span>
+    <span class="p">}</span>
+
+
+<span class="o">&lt;</span><span class="sr">/style</span><span class="err">&gt;
+</span></code></pre></div><p>vue에서는 단일 파일 컴포넌트가 가능하다. .vue로 끝나는 파일 하나가 컴포넌트이다.<p>만약 부모 컴포넌트가 자식 컴포넌트에게 data를 줄 때 v-bind:를 통해 줄 수있으며 줄여서 :만 쓴다.<p>또한 자식컴포넌트가 부모 컴포넌트와 교류하고 싶을 때는 부모가 자식에게 어떠한 이벤트가 발생했을 때 실행할 수 있는 함수를 물려준다. 자식은 그 이벤트를 emit시킴으로써 부모의 함수를 실행 시킬 수 있다.<div class="language-shell highlighter-rouge"><pre class="highlight"><code>npm install vue-template-compiler
+</code></pre></div><p>단일 파일 컴포넌트를 이용하기 위해서 필요하다.<div class="post-links"> <a class="link-to-post" href="/posts/1700/"> <span class="link-to-post__prev">&#10535; &nbsp;Previous post</span> <span class="link-to-post__title">1700 - 멀티탭 스케줄링</span> </a></div></div></article></main><footer class="blog-footer content-wrapper"><p>&copy; <span class="full-year"></span> GuBeom</footer><script src="/assets/js/scripts.js"></script>
